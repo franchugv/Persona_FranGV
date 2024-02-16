@@ -5,7 +5,7 @@
 
         // CONSTANTES
 
-        private const char SEX_DEFAULT = 'H';
+        private const char SEX_DEFAULT_MALE = 'H';
         private const char SEX_DEFAULT_FEMALE = 'F';
 
         private const int BAJO_PESO = -1;
@@ -25,8 +25,6 @@
 
         private int _edad;
 
-        private string _dni;
-
         private char _sexo;
 
         private float _peso;
@@ -39,10 +37,10 @@
         {
             _nombre = "";
             _edad = 0;
-            _sexo = SEX_DEFAULT;
+            _sexo = SEX_DEFAULT_MALE;
             _peso = 0;
             _altura = 0;
-            _dni = GenerarDniTotal();
+            GenerarDniTotal();
         }
 
         public Persona(string name, int old, char sex)
@@ -52,17 +50,17 @@
             Sexo = sex;
             _peso= 0;
             _altura = 0;
-            _dni = GenerarDniTotal();
+            GenerarDniTotal();
         }
 
-        public Persona(string name, int old, char sex, float weight, float height, string docnacind)
+        public Persona(string name, int old, char sex, float weight, float height)
         {
             Nombre= name;
             Edad = old;
             Sexo = sex;
             Peso = weight;
             Altura = height;
-            _dni = GenerarDniTotal();
+            GenerarDniTotal();
         }
         // PROPIEDADES
 
@@ -96,7 +94,7 @@
         {
             get
             {
-                return _dni; // Solo lectura
+                return GenerarDniTotal(); // Solo lectura
             }
 
         }
@@ -188,9 +186,9 @@
             // RECURSOS
 
             // PROCESO
-            if ((sex != SEX_DEFAULT) || (sex != SEX_DEFAULT_FEMALE))
+            if ((sex != SEX_DEFAULT_MALE) || (sex != SEX_DEFAULT_FEMALE))
             {
-                sex = SEX_DEFAULT;
+                sex = SEX_DEFAULT_MALE;
             }
 
 
@@ -260,7 +258,7 @@
 
             // SALIDA
 
-            if (Sexo == SEX_DEFAULT) 
+            if (Sexo == SEX_DEFAULT_MALE) 
             { 
             cadena = $"El paciente {Nombre} de {Edad} años y con DNI {Dni}\n";
             }
